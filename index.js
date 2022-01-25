@@ -31,5 +31,5 @@ app.use((err, req, res, next) => {
 
 // Start Server
 app.listen(app.get('port'), () => {
-    console.log(`🍀 Port: ${app.get('port')} 🌞`)
-})
+    console.log(`🍀 Port: ${app.get('port')} 🌞`);
+});
