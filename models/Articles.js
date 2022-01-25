@@ -2,13 +2,17 @@
 const mongoose = require('../db/connection');
 
 // Schema
-const ArticleSchema = new mongoose.Schema({
-	title: String,
-	author: String,
-	time: new Date(),
-	photo_url: String,
-	content: String,
-});
+const ArticleSchema = new mongoose.Schema(
+	{
+		title: String,
+		author: String,
+		photo_url: String,
+		content: String,
+	},
+    // Time Stamps 
+	// https://masteringjs.io/tutorials/mongoose/timestamps
+	{ timestamps: true }
+);
 
 // instantiate the model
 const Articles = mongoose.model('Articles', ArticleSchema);
