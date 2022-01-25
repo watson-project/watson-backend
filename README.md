@@ -5,11 +5,16 @@ The Watson is an open sourced, blog style website with support for text and imag
 The Watson.
 Share the Future.
 
+
+### What we did for the Backend
+
+The backend developers for The Watson created a dynamic model that allows users to post an image url, title, author and the content. We structured the controller to allow users to update, create and delete. We also arranged tests utilizing Node.js to compare the data and figure out whether our API is functional. This API helped create The Watson to forsee the future. 
+
 ### Scrum Lead
 David Gales
 
 ### Developers
-| Joey Chang | Landon Spell | Michel Pathinvo | David Gales
+Joey Chang | Landon Spell | Michel Pathinvo | David Gales
 
 ### Software Used to Develop the Backend
 
