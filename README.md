@@ -1,5 +1,9 @@
 ### Description
-An open source, blog style website with support for text and images. Free from intrusive advertisements and clunky UIs, (PLACEHOLDER NAME) is the place where you can shout to the masses and be heard.
+
+The Watson is an open sourced, blog style website with support for text and images. Free from intrusive advertisements and clunky UI's, The Watson is the place where you can shout to the masses and be heard. Keeping the style of open source, every article is able to be viewed, edited, and deleted by any user.
+
+The Watson.
+Share the Future.
 
 ### Scrum Lead
 David Gales
