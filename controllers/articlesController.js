@@ -7,7 +7,11 @@ const Articles = require('../models/Articles');
 router.get('/', async (req, res, next) => {
 	try {
 		const articles = await Articles.find({});
-		res.json(articles);
+		if (articles) {
+			res.status(200).json(articles);
+		} else {
+			return res.sendStatus(404);
+		}
 	} catch (error) {
 		next(error);
 	}
@@ -18,7 +22,7 @@ router.get('/:id', async (req, res, next) => {
 	try {
 		const article = await Articles.findById(req.params.id);
 		if (article) {
-			res.json(article);
+			res.status(200).json(article);
 		} else {
 			res.sendStatus(404);
 		}
@@ -31,9 +35,13 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
 	try {
 		const newArticle = await Articles.create(req.body);
-		res.status(201).json(newArticle);l
+		if (newArticle) {
+			res.status(201).json(newArticle);
+		} else {
+			return res.sendStatus(404);
+		}
 	} catch (error) {
-		next(error)
+		next(error);
 	}
 });
 
@@ -45,7 +53,11 @@ router.put('/:id', async (req, res, next) => {
 			req.body,
 			{ new: true, overwrite: true }
 		);
-		res.json(articleToUpdate);
+		if (articleToUpdate) {
+			res.status(202).json(articleToUpdate);
+		} else {
+			return res.sendStatus(406);
+		}
 	} catch (error) {
 		next(error);
 	}
@@ -58,9 +70,9 @@ router.delete('/:id', async (req, res, next) => {
 			_id: req.params.id,
 		});
 		if (deleteArticle) {
-			res.json(deleteArticle);
+			res.status(200).json(deleteArticle);
 		} else {
-			res.sendStatus(404);
+			res.sendStatus(405);
 		}
 	} catch (error) {
 		next(error);
