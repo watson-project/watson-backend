@@ -24,7 +24,7 @@ app.use('/api/articles', articlesController);
 
 // End Controllers 
 app.use((err, req, res, next) => {
-    const statusCode = res.StatusCode || 500;
+    const statusCode = res.statusCode || 500;
     const message = err.message || 'Internal Server Error';
     res.status(statusCode).send(message);
 });

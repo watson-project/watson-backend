@@ -65,7 +65,7 @@ describe('POST /api/articles', () => {
 			.send(newArticles)
 			.end((err, res) => {
 				newArticleID = res.body._id;
-                done();
+				done();
 			});
 	});
 
@@ -85,44 +85,57 @@ describe('POST /api/articles', () => {
 
 // PUT - Updating an Article
 describe('PUT /api/articles', () => {
-    const newArty = {
-			title: "George Bush doesn't eat cats!",
-			author: 'Barack Obama',
-			photo_url:
-				'https://i.kym-cdn.com/photos/images/facebook/000/516/911/cba.jpg',
-			content: 'Barack Obama holds a ted talk that George Bush doesn\'t eat cats.',
-		};
-        let newArtyID
-        before((done) => {
-            api.post('/api/articles').send(newArty).end((err, res) => {
-                newArtyID = res.body._id;
-                done();
-            });
-        });
-        const newTitle = 'George Bush does eat Cats!'
-        it('should correctly update the article with the new data', (done) => {
-            api.put(`/api/articles/${newArtyID}`).send({ ...newArty, title: newTitle }).end((err, res) => {
-                expect(res.body.title).to.equal(newTitle);
-                done();
-            });
-        });
+	const newArty = {
+		title: "George Bush doesn't eat cats!",
+		author: 'Barack Obama',
+		photo_url:
+			'https://i.kym-cdn.com/photos/images/facebook/000/516/911/cba.jpg',
+		content: "Barack Obama holds a ted talk that George Bush doesn't eat cats.",
+	};
+	let newArtyID;
+	before((done) => {
+		api
+			.post('/api/articles')
+			.send(newArty)
+			.end((err, res) => {
+				newArtyID = res.body._id;
+				done();
+			});
+	});
+	const newTitle = 'George Bush does eat Cats!';
+	it('should correctly update the article with the new data', (done) => {
+		api
+			.put(`/api/articles/${newArtyID}`)
+			.send({ ...newArty, title: newTitle })
+			.end((err, res) => {
+				expect(res.body.title).to.equal(newTitle);
+				done();
+			});
+	});
 });
 
 // DELETE - Delete an Article
 describe('DELETE /api/articles/:id', () => {
-    before((done) => {
-        let artID;
-        api.delete('/api/articles').end((err, res) => {
-					artID = res.body._id;
-					done();
-				});
-    });
-
-    it('should delete an article from the article array', (done) => {
-        api.get('/api/articles').end((err, res) => {
-					const deletedArticle = res.body.find((article) => article.id === 1);
-					expect(deletedArticle).to.equal(undefined);
-					done();
-				});
-    });
+	let artID;
+	before((done) => {
+		api.get('/api/articles').end((err, res) => {
+			artID = res.body[0]._id;
+			done();
+		});
+	});
+	it('should retrieve the correct response status 200', (done) => {
+		api.delete(`/api/articles/${artID}`).end((err, res) => {
+			expect(res.status).to.equal(200);
+			expect(res.body._id).to.equal(artID);
+			done();
+		});
+	});
+	it('should delete an article from the article array', (done) => {
+		api.get(`/api/articles/${artID}`).end((err, res) => {
+			const deletedArticle = res.body;
+			expect(deletedArticle).to.deep.equal({});
+			expect(res.status).to.equal(404);
+			done();
+		});
+	});
 });
