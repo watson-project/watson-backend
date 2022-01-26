@@ -21,6 +21,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 	try {
 		const article = await Articles.findById(req.params.id);
+		console.log(article);
 		if (article) {
 			res.status(200).json(article);
 		} else {
