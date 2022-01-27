@@ -1,0 +1,29 @@
+Main componenet - 'Index.JS'
+
+Install express, mongoose, and dotenv. Place DATABASE_URL and copy and paste the url from new mongoDB account created with watson_project email. 
+
+    1. Create Database(db) folder
+        - Within db folder create connection.js, seed.js and fill out seed.json
+        - Fill out seed.js to allow developers to know what exactly is happening when you delete, update or create a new article.
+        - Make sure connection is correct and nodemon is working in terminal
+    2. Create a models folder  
+        - Within models folder create an Articles.js 
+        - Build out Schema with mongoose within Articles.js and instantiate the model so you're able to export the information. 
+    3. Create a controllers folder
+        - Within the controllers folder, create a file named articlesController.js 
+        - import express
+        - import router from express
+        - import the model (Articles)
+        - Create the routes used to show all, show one by id, create an article, update an article and delete an article
+        - don't forget to export the router
+    4. Within the index.js
+        - import express and 'app' from express
+        - set the port to 3000, since we're utilizing localhost:3000
+        - Set the redirect to '/api/articles' so when developers hit localhost:3000 after nodemon they are redirected to the correct url. 
+        - Import controllers and direct all the request to '/api/articles'
+        - Have an end controller incase server breaks. Sends out message and server error code. 
+        - Have the 'app' listening when the server is started through the terminal. 
+        - DON'T FORGET TO EXPORT APP.
+    5. Create test folder 
+        - Within the test folder create a articles.test.js 
+        - List each test within the javascript file to run for each get, post, put, and delete. 
