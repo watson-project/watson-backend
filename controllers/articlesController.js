@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const { requireToken } = require('../requestLogger/auth');
 
 const Articles = require('../models/Articles');
 
 // Index: Get all articles
-router.get('/', async (req, res, next) => {
+router.get('/', requireToken, async (req, res, next) => {
 	try {
 		const articles = await Articles.find({});
 		if (articles) {
@@ -18,7 +19,7 @@ router.get('/', async (req, res, next) => {
 });
 
 // Show: Get one article by id
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', requireToken, async (req, res, next) => {
 	try {
 		const article = await Articles.findById(req.params.id);
 		console.log(article);
@@ -33,7 +34,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // Create: Add an article
-router.post('/', async (req, res, next) => {
+router.post('/', requireToken, async (req, res, next) => {
 	try {
 		const newArticle = await Articles.create(req.body);
 		if (newArticle) {
@@ -47,7 +48,7 @@ router.post('/', async (req, res, next) => {
 });
 
 // Update: Edit an article by id
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', requireToken, async (req, res, next) => {
 	try {
 		const articleToUpdate = await Articles.findByIdAndUpdate(
 			req.params.id,
@@ -65,7 +66,7 @@ router.put('/:id', async (req, res, next) => {
 });
 
 // Delete: Remove an article by id
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', requireToken, async (req, res, next) => {
 	try {
 		const deleteArticle = await Articles.findOneAndDelete({
 			_id: req.params.id,

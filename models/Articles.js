@@ -8,8 +8,13 @@ const ArticleSchema = new mongoose.Schema(
 		author: String,
 		photo_url: String,
 		content: String,
+		owner: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User',
+			required: true,
+		},
 	},
-    // Time Stamps 
+	// Time Stamps
 	// https://masteringjs.io/tutorials/mongoose/timestamps
 	{ timestamps: true }
 );
