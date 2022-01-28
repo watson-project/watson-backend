@@ -53,7 +53,7 @@ router.post('/', async (req, res, next) => {
 router.put('/:id', requireToken, async (req, res, next) => {
 	try {
 		const articleToUpdate = await Articles.findByIdAndUpdate(
-			req.params.id,
+			req.params._id,
 			req.body,
 			{ new: true, overwrite: true }
 		);
