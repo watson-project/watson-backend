@@ -1,11 +1,13 @@
 const express = require('express');
+const res = require('express/lib/response');
+const app = require('..');
 const router = express.Router();
-const { requireToken } = require('../requestLogger/auth');
+const { requireToken } = require('../middleware/auth');
 
 const Articles = require('../models/Articles');
 
 // Index: Get all articles
-router.get('/', requireToken, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
 	try {
 		const articles = await Articles.find({});
 		if (articles) {
@@ -19,7 +21,7 @@ router.get('/', requireToken, async (req, res, next) => {
 });
 
 // Show: Get one article by id
-router.get('/:id', requireToken, async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
 	try {
 		const article = await Articles.findById(req.params.id);
 		console.log(article);
@@ -34,7 +36,7 @@ router.get('/:id', requireToken, async (req, res, next) => {
 });
 
 // Create: Add an article
-router.post('/', requireToken, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
 	try {
 		const newArticle = await Articles.create(req.body);
 		if (newArticle) {
@@ -80,5 +82,19 @@ router.delete('/:id', requireToken, async (req, res, next) => {
 		next(error);
 	}
 });
+
+router.get('/search/:title', async (req, res, next) => {
+	try {
+		const regexTitle = new RegExp(req.params.title)
+		const searchArticle = await Articles.find({ "title": { "$regex": regexTitle, "$options": "i"}})
+		if (searchArticle) {
+			res.status(200).json(searchArticle);
+		} else {
+			res.sendStatus(405);
+		}
+	} catch (error) {
+		next(error);
+	}
+})
 
 module.exports = router;
