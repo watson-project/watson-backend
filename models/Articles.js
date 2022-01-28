@@ -3,15 +3,20 @@ const mongoose = require('../db/connection');
 
 // Schema
 const ArticleSchema = new mongoose.Schema(
-	{
-		title: String,
-		author: String,
-		photo_url: String,
-		content: String,
-	},
-    // Time Stamps 
-	// https://masteringjs.io/tutorials/mongoose/timestamps
-	{ timestamps: true }
+  {
+    title: String,
+    author: String,
+    photo_url: String,
+    content: String,
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Users',
+      // required: true,
+    },
+  },
+  // Time Stamps
+  // https://masteringjs.io/tutorials/mongoose/timestamps
+  { timestamps: true }
 );
 
 // instantiate the model
