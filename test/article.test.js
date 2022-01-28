@@ -139,3 +139,7 @@ describe('DELETE /api/articles/:id', () => {
 		});
 	});
 });
+
+// describe('GET /api/articles/search/:title', () => {
+
+// })

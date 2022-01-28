@@ -10,8 +10,8 @@ const ArticleSchema = new mongoose.Schema(
 		content: String,
 		owner: {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'User',
-			required: true,
+			ref: 'Users',
+			// required: true,
 		},
 	},
 	// Time Stamps

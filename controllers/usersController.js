@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const router = express.Router();
 // Require the createUserToken method
-const { createUserToken } = require('../requestLogger/auth');
+const { createUserToken } = require('../middleware/auth');
 
 //Using promise chain
 router.post('/signup', (req, res, next) => {
