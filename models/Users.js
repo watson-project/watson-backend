@@ -11,8 +11,6 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			// required: 'Please enter a valid password',
 		},
-		// resetPasswordToken: String,
-		// resetPasswordExpires: Date,
 	},
 	{
 		timestamps: true,
