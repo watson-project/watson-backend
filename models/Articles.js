@@ -11,7 +11,7 @@ const ArticleSchema = new mongoose.Schema(
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Users',
-      // required: true,
+      required: true,
     },
   },
   // Time Stamps

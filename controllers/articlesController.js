@@ -3,7 +3,10 @@ const res = require('express/lib/response');
 const app = require('..');
 const router = express.Router();
 const { requireToken } = require('../middleware/auth');
-const { handleValidateOwnership } = require('../middleware/custom_errors');
+const {
+  handleValidateOwnership,
+  handleValidateId,
+} = require('../middleware/custom_errors');
 
 const Articles = require('../models/Articles');
 

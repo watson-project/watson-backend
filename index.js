@@ -9,7 +9,7 @@ const request_logger = require('./middleware/request_logger');
 // The catch all for handling errors
 const { handleErrors } = require('./middleware/custom_errors');
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 4000);
 
 // Middleware
 app.use(express.json());
