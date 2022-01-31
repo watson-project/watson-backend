@@ -1,11 +1,15 @@
 const express = require('express');
 const User = require('../models/Users');
 const bcrypt = require('bcrypt');
+const { requireToken } = require('../middleware/auth');
+const handleValidateOwnership = require('../middleware/custom_errors');
+
 
 const router = express.Router();
 // Require the createUserToken method
 
 const { createUserToken } = require('../middleware/auth');
+const res = require('express/lib/response');
 
 //Using promise chain
 router.post('/signup', (req, res, next) => {
@@ -64,5 +68,20 @@ router.post('/signin', (req, res, next) => {
     .then((token) => res.json({ token }))
     .catch(next);
 });
+
+// Log Out
+router.get('/logout', requireToken, async (req, res, next) => {
+  try {
+    const userId = await User.findByIdAndRemove(req.params._id);
+    console.log(userId)
+    if (userId) {
+      res.status(200).json(userId);
+    } else {
+      res.sendStatus(400);
+    }
+  } catch (error) {
+    next(error)
+  }
+})
 
 module.exports = router;
