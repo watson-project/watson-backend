@@ -1,4 +1,4 @@
-# Description
+# The Watson
 
 The Watson is an open sourced, blog style website with support for text and images. Free from intrusive advertisements and clunky UI's, The Watson is the place where you can shout to the masses and be heard. Keeping the style of open source, every article is able to be viewed, edited, and deleted by any user.
 
@@ -12,26 +12,26 @@ The backend developers for The Watson created a dynamic model that allows users 
 Update (1/28/2021): 
 The backend developers did an amazing job adding 'User Authorization.'
 
-### Scrum Lead
+## Scrum Lead
 
 David Gales
 
-### Developers
+## Developers
 
 Joey Chang | Landon Spell | Michel Pathinvo | David Gales
 
-### Software Used to Develop the Backend
+## Software Used to Develop the Backend
 
 - JavaScript
 - Mongoose
 - MongoDB
 - Heroku to deploy API
 
-### API URL
+## API URL
 
 https://watson-project.herokuapp.com/api/articles
 
-### Installation 
+## Installation 
 1. Fork and copy the SSH of the repo
 2. Paste SSH within Terminal in designated folder
     ```
@@ -45,6 +45,6 @@ https://watson-project.herokuapp.com/api/articles
     ```
     http://localhost:3000/
     ```
-### Flow Chart
+## Flow Chart
 
 ![FLOW CHART](assets/flow-chart.png)
