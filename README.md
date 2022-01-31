@@ -1,11 +1,11 @@
-### Description
+# Description
 
 The Watson is an open sourced, blog style website with support for text and images. Free from intrusive advertisements and clunky UI's, The Watson is the place where you can shout to the masses and be heard. Keeping the style of open source, every article is able to be viewed, edited, and deleted by any user.
 
 The Watson.
 Share the Future.
 
-### What we did for the Backend
+## What we did for the Backend
 
 The backend developers for The Watson created a dynamic model that allows users to post an image url, title, author and the content. We structured the controller to allow users to update, create and delete. We also arranged tests utilizing Node.js to compare the data and figure out whether our API is functional. This API helped create The Watson to forsee the future.
 
