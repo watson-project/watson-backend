@@ -4,13 +4,15 @@ const userSchema = new mongoose.Schema(
 	{
 		email: {
 			type: String,
-			// required: true,
+			// required: 'Please enter a valid email!',
 			unique: true,
 		},
 		password: {
 			type: String,
-			// required: true,
+			// required: 'Please enter a valid password',
 		},
+		resetPasswordToken: String,
+		resetPasswordExpires: Date,
 	},
 	{
 		timestamps: true,

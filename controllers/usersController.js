@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const router = express.Router();
 // Require the createUserToken method
-<<<<<<< HEAD
+
 const { createUserToken } = require('../middleware/auth');
 
 //Using promise chain
@@ -28,9 +28,7 @@ router.post('/signup', (req, res, next) => {
     .then((user) => res.status(201).json(user))
     // pass any errors along to the error handler
     .catch(next);
-=======
-const { createUserToken } = require('../requestLogger/auth');
-
+})
 //Using promise chain
 router.post('/signup', (req, res, next) => {
 	bcrypt
@@ -52,13 +50,11 @@ router.post('/signup', (req, res, next) => {
 		.then((user) => res.status(201).json(user))
 		// pass any errors along to the error handler
 		.catch(next);
->>>>>>> 239700a (edited users.js)
 });
 
 // SIGN IN
 // POST /api/signin
 router.post('/signin', (req, res, next) => {
-<<<<<<< HEAD
   User.findOne({ email: req.body.email })
     // Pass the user and the request to createUserToken
     .then((user) => createUserToken(req, user))
@@ -67,16 +63,6 @@ router.post('/signin', (req, res, next) => {
     // a token that we'll in turn send to the client.
     .then((token) => res.json({ token }))
     .catch(next);
-=======
-	User.findOne({ email: req.body.email })
-		// Pass the user and the request to createUserToken
-		.then((user) => createUserToken(req, user))
-		// createUserToken will either throw an error that
-		// will be caught by our error handler or send back
-		// a token that we'll in turn send to the client.
-		.then((token) => res.json({ token }))
-		.catch(next);
->>>>>>> 239700a (edited users.js)
 });
 
 module.exports = router;
